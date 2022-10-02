@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       {/* 왼쪽 카테고리 & 검색 부분 */}
       <div className="aside" />
-      {/* 지도BB  */}
+      {/* 지도BBCCC  */}
       <div className="main" />
     </div>
   );
