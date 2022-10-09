@@ -7,13 +7,14 @@ const Modal = (props) => {
 
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
+    // 클래스 이름 변경
     <div className={open ? "openModal modal" : "modal"}>
       {open ? (
         <section>
           <header>
             {header}
             <button className="close" onClick={close}>
-              &times;
+              {/* &times; */}
             </button>
           </header>
           <main>{props.children}</main>

@@ -29,7 +29,7 @@
   border-radius: 0.3rem;
   background-color: #FFE6F7;
   /* 팝업이 열릴때 스르륵 열리는 효과 */
-  animation: modal-show 2s;
+  animation: modal-show 1s;
   overflow: hidden;
 }
 .modal > section > header {
@@ -59,11 +59,12 @@
   text-align: right;
 }
 .modal > section > footer button {
+  font-family: 'Cafe24Ssurround';
   padding: 6px 12px;
-  color: #fff;
+  color: rgb(1, 6, 16);
   background-color: #FFABE1;
-  border-radius: 5px;
-  font-size: 13px;
+  border-radius: 0.3rem;
+  font-size: 15px;
 }
 .modal.openModal {
   display: flex;
@@ -74,7 +75,7 @@
 @keyframes modal-show {
   from {
     opacity: 0;
-    margin-top: -200px;
+    margin-top: -100px;
   }
   to {
     opacity: 1;
