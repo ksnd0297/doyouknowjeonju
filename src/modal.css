@@ -6,6 +6,7 @@
 }
 
 .modal {
+  font-family: 'Cafe24Ssurround';
   display: none;
   position: flex;
   position:absolute;
@@ -28,7 +29,7 @@
   border-radius: 0.3rem;
   background-color: #FFE6F7;
   /* 팝업이 열릴때 스르륵 열리는 효과 */
-  animation: modal-show 0.3s;
+  animation: modal-show 2s;
   overflow: hidden;
 }
 .modal > section > header {
@@ -73,7 +74,7 @@
 @keyframes modal-show {
   from {
     opacity: 0;
-    margin-top: -50px;
+    margin-top: -200px;
   }
   to {
     opacity: 1;
