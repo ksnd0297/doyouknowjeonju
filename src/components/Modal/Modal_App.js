@@ -22,8 +22,6 @@ function ModalApp() {
         <br />
         주소 : <p />
         <br />
-        휴무일 : <p />
-        <br />
         전화번호 : <p />
         <br />
       </Modal>
