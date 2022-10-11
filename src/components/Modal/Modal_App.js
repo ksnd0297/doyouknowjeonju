@@ -18,9 +18,14 @@ function ModalApp() {
       <Modal open={modalOpen} close={closeModal} header="Modal heading">
         운영시간 : <p />
         <br />
+        진료과목 : <p />
+        <br />
+        주소 : <p />
+        <br />
         휴무일 : <p />
         <br />
         전화번호 : <p />
+        <br />
       </Modal>
     </React.Fragment>
   );
