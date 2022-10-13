@@ -1,17 +1,12 @@
 import React, { useState } from "react";
-import Modal from "./Modal";
+import { Modal } from "./Modal";
 
-function ModalApp() {
+export function Modal_App(props) {
   // useState를 사용하여 open상태를 변경한다. (open일때 true로 만들어 열리는 방식)
-  const [modalOpen, setModalOpen] = useState(false);
 
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  const { modalOpen, openModal, closeModal } = props;
 
+  console.log(modalOpen);
   return (
     <React.Fragment>
       <button onClick={openModal}>병원 마크</button>
@@ -28,5 +23,3 @@ function ModalApp() {
     </React.Fragment>
   );
 }
-
-export default ModalApp;
