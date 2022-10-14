@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { Modal_App } from "./components/Modal/Modal_App";
+import { ModalApp } from "./components/Modal/ModalApp";
 import "./App.scss";
 
 function App() {
-  const [modalOpen, setModalOpen] = useState(false); //빆으로 빼기
-
-  const openModal = () => {
-    setModalOpen(true);
+  const [modalOpen, setModalOpen] = useState(0); //빆으로 빼기
+  const openParkingModal = () => {
+    setModalOpen(2);
+  };
+  const openHospitalModal = () => {
+    setModalOpen(1);
   };
   const closeModal = () => {
-    setModalOpen(false);
+    setModalOpen(0);
   };
   return (
     <div className="App">
@@ -17,9 +19,10 @@ function App() {
       <div className="aside" />
       {/* 지도BBCCD  */}
       <div className="main">
-        <Modal_App
+        <ModalApp
           modalOpen={modalOpen}
-          openModal={openModal}
+          openHospitalModal={openHospitalModal}
+          openParkingModal={openParkingModal}
           closeModal={closeModal}
         />
       </div>
