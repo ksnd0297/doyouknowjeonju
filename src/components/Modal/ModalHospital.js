@@ -1,6 +1,7 @@
 import React from "react";
 import "../../scss/modal.css";
-// import ImageButton from "react-image-button";
+
+// import ImageButton from "react-image-button";    오류
 export const ModalHospital = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
@@ -14,7 +15,10 @@ export const ModalHospital = (props) => {
           <header>
             {header}
             {/* <ImageButton img="../../scss/star_86960.ico"> */}
-            <button className="close" onClick={close}></button>
+            <button className="close" onClick={close}>
+              즐겨찾기
+            </button>
+
             {/* </ImageButton> */}
           </header>
           <main>

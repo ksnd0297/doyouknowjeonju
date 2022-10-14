@@ -13,9 +13,9 @@ export const ModalParking = (props) => {
         <section>
           <header>
             {header}
-            <button className="close" onClick={close} img="../../scss/star.ico">
+            <button className="close" onClick={close}>
               {/*X표시*/}
-              {/* &times; */}
+              &times;
             </button>
           </header>
           <main>
