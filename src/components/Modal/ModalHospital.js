@@ -14,7 +14,7 @@ export const ModalHospital = (props) => {
         <section>
           <header>
             {header}
-            {/* <ImageButton img="../../scss/star_86960.ico"> */}
+            {/* <ImageButton img="../../scss/star_86960.ico">*/}
             <button className="close" onClick={close}>
               즐겨찾기
             </button>
