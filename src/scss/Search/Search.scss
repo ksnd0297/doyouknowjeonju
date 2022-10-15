@@ -1,8 +1,8 @@
-.Search_Main {
+.Search_main {
     height: 100%;
-    background: #937DC2;
+    background: #FFABE1;
 
-    .Search_SearchBar {
+    .Search_searchBar {
         height: 20%;
         outline: none;
         border: none;
@@ -10,7 +10,7 @@
         line-height: 1.5;
         flex: 1;
 
-        .Search_Button {
+        .Search_button {
             background: none;
             outline: none;
             border: none;
@@ -21,15 +21,15 @@
         }
     }
 
-    .Search_OtherComponents {
+    .Search_otherComponents {
         height: 100%;
 
-        .Search_Menu {
-            height: 15%;
+        .Search_menu {
+            height: 10%;
             background-color: yellow;
         }
 
-        .Search_Taps {
+        .Search_tabs {
             height: 100%;
             background-color: blue;
         }

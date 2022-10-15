@@ -1,13 +1,13 @@
-.TagListItem_Main{
+.TagListItem_main{
     background: #FFE6F7;
     padding: 0.5rem;
     display: flex;
-    .TagListItem_Checkbox{
+    .TagListItem_checkbox{
         margin: none;
         padding:none;
         flex:0.2;
     }
-    .TagListItem_Hos_Name{
+    .TagListItem_hos_Name{
         flex: 1;
     }
     & + &{

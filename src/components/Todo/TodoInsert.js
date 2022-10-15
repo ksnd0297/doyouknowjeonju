@@ -3,30 +3,30 @@ import { MdAdd } from "react-icons/md";
 import "../../scss/Todo/TodoInsert.scss";
 
 export const TodoInsert = ({ Todo_OnInsert }) => {
-  const [Value, SetValue] = useState(""); //Todo에 입력된 값을 관리하기 위해 선언
+  const [value, setValue] = useState(""); //Todo에 입력된 값을 관리하기 위해 선언
 
-  const Todo_ChangeValue = useCallback((e) => {
-    SetValue(e.target.value);
+  const changeTodoValue = useCallback((e) => {
+    setValue(e.target.value);
   }, []); //맨 처음 랜더링때만 함수가 호출됨, value 값을 변경하는 함수
 
-  const Todo_Submit = useCallback(
+  const todoSubmit = useCallback(
     //새로운 투두리스트 값이 제출되었을 때, 함수와 Value 값이 변경될 때만 사용할 수 있도록 useCallback 사용
     (e) => {
-      Todo_OnInsert(Value);
-      SetValue("");
+      Todo_OnInsert(value);
+      setValue("");
       e.preventDefault();
     },
-    [Todo_OnInsert, Value]
+    [Todo_OnInsert, value]
   );
   return (
-    <form className="Todo_InsertForm" onSubmit={Todo_Submit}>
+    <form className="Todo_insertForm" onSubmit={todoSubmit}>
       <input
-        className="Todo_Insert"
+        className="Todo_insert"
         placeholder="내용 입력하는 곳"
-        value={Value}
-        onChange={Todo_ChangeValue}
+        value={value}
+        onChange={changeTodoValue}
       />
-      <button type="submit" className="Todo_Button">
+      <button type="submit" className="Todo_button">
         <MdAdd />
       </button>
     </form>

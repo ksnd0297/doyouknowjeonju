@@ -1,74 +1,74 @@
 import React, { useState, useCallback } from "react";
 import "../../scss/Tags/Tag.scss";
-import { TagListItem } from "./TagListItem";
+import { TagListItem } from "../Tags/TagListItem.js";
 
 export const Tag = () => {
-  //키 값으로 쓸 Id, 병원 종류, 체크 유무로 구성된 객체 생성
-  const [HospitalTag, SetHospitalTag] = useState([
+  //키 값으로 쓸 id, 병원 종류, 체크 유무로 구성된 객체 생성
+  const [hospitalTag, SetHospitalTag] = useState([
     {
-      Id: 1,
-      Hos_Name: "내과",
-      Checked: false,
+      id: 1,
+      hos_Name: "내과",
+      checked: false,
     },
     {
-      Id: 2,
-      Hos_Name: "신경과",
-      Checked: true,
+      id: 2,
+      hos_Name: "신경과",
+      checked: false,
     },
     {
-      Id: 3,
-      Hos_Name: "정신과",
-      Checked: true,
+      id: 3,
+      hos_Name: "정신과",
+      checked: false,
     },
     {
-      Id: 4,
-      Hos_Name: "외과",
-      Checked: true,
+      id: 4,
+      hos_Name: "외과",
+      checked: false,
     },
     {
-      Id: 5,
-      Hos_Name: "안과",
-      Checked: true,
+      id: 5,
+      hos_Name: "안과",
+      checked: false,
     },
     {
-      Id: 6,
-      Hos_Name: "치과",
-      Checked: true,
+      id: 6,
+      hos_Name: "치과",
+      checked: false,
     },
     {
-      Id: 7,
-      Hos_Name: "이비인후과",
-      Checked: true,
+      id: 7,
+      hos_Name: "이비인후과",
+      checked: false,
     },
     {
-      Id: 8,
-      Hos_Name: "산부인과",
-      Checked: true,
+      id: 8,
+      hos_Name: "산부인과",
+      checked: false,
     },
   ]);
   //태그 체크유무 변경 함수
-  const Tag_Toggle = useCallback(
-    (Id) => {
+  const tagToggle = useCallback(
+    (id) => {
       SetHospitalTag(
-        HospitalTag.map((Hos_Tag) =>
-          Hos_Tag.Id === Id
-            ? { ...Hos_Tag, Checked: !Hos_Tag.Checked }
-            : Hos_Tag
+        hospitalTag.map((hos_Tag) =>
+          hos_Tag.id === id
+            ? { ...hos_Tag, checked: !hos_Tag.checked }
+            : hos_Tag
         )
       );
     },
-    [HospitalTag]
+    [hospitalTag]
   );
 
   return (
-    <div className="Tag_Main">
-      <div className="Tag_Checkbox">
+    <div className="Tag_main">
+      <div className="Tag_checkbox">
         {/* 체그박스 + 병원 이름 */}
-        {HospitalTag.map((Tag) => (
+        {hospitalTag.map((tag) => (
           <TagListItem
-            TagListItem_Tags={Tag}
-            key={Tag.Id}
-            TagListItem_Toggle={Tag_Toggle}
+            tagListItemTags={tag}
+            key={tag.id}
+            tagListItemToggle={tagToggle}
           />
         ))}
       </div>

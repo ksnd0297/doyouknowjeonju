@@ -2,18 +2,18 @@ import React from "react";
 import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
 import "../../scss/Tags/TagListItem.scss";
 
-export const TagListItem = ({ TagListItem_Tags, TagListItem_Toggle }) => {
-  const { Id, Hos_Name, Checked } = TagListItem_Tags;
+export const TagListItem = ({ tagListItemTags, tagListItemToggle }) => {
+  const { id, hos_Name, checked } = tagListItemTags;
   return (
-    <div className="TagListItem_Main">
+    <div className="TagListItem_main">
       <div
-        className="TagListItem_Checkbox"
-        onClick={() => TagListItem_Toggle(Id)}
+        className="TagListItem_checkbox"
+        onClick={() => tagListItemToggle(id)}
       >
-        {Checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+        {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
         {/* checked에 따라 아이콘 달라짐 */}
       </div>
-      <div className="TagListItem_Hos_Name">{Hos_Name}</div>
+      <div className="TagListItem_hos_Name">{hos_Name}</div>
       {/* 병원 출력 */}
     </div>
   );
