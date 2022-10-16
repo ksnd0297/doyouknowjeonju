@@ -40,12 +40,13 @@
 }
 .modal > section > header button {
   position: absolute;
-  top: 15px;
+  /* top: 15px; */
   right: 15px;
-  width: 30px;
-  font-size: 21px;
-  font-weight: 700;
+  width: 60px;
+  font-size: 15px;
+  font-weight: 600;
   text-align: center;
+  text-justify: center;
   color: rgb(9, 18, 152);
   background-color: transparent;
 }
