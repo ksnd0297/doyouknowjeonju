@@ -3,20 +3,17 @@ import {
   MdBookmarks,
   MdBookmarkBorder,
   MdAssignment,
-  MdAssignmentTurnedIn,
+  MdContentPaste,
   MdLabel,
   MdLabelOutline,
 } from "react-icons/md";
 import "../../scss/Menu/Menu.scss";
-import { Bookmark } from "../Bookmark/Bookmark";
-import { Tag } from "../Tags/Tag";
-import { Todo } from "../Todo/Todo";
 
 export const Menu = () => {
   const [pages, setPage] = useState([
-    { id: 1, Page_Name: "Tag", checked: true },
+    { id: 1, Page_Name: "Tag", checked: false },
     { id: 2, Page_Name: "Bookmark", checked: false },
-    { id: 3, Page_Name: "TodoList", checked: false },
+    { id: 3, Page_Name: "TodoList", checked: true },
   ]);
 
   const menuChange = useCallback(
@@ -38,7 +35,7 @@ export const Menu = () => {
         {pages[1].checked ? <MdBookmarks /> : <MdBookmarkBorder />}
       </div>
       <div className="Menu_goTodo" onClick={menuChange}>
-        {pages[2].checked ? <MdAssignment /> : <MdAssignmentTurnedIn />}
+        {pages[2].checked ? <MdAssignment /> : <MdContentPaste />}
       </div>
     </div>
   );

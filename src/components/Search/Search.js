@@ -28,8 +28,7 @@ export const Search = () => {
           <Menu />
         </div>
         <div className="Search_tabs">
-          {/* 스펠링 틀림 tab */}
-          <Todo />
+          <Bookmark />
         </div>
       </div>
     </div>
