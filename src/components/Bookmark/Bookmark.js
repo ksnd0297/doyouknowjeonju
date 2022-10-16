@@ -25,7 +25,7 @@ export const Bookmark = () => {
   );
 
   return (
-    <div className="Bookmark_main">
+    <div className="Bookmark_Main">
       <div className="Bookmark_List">
         {hospitals.map((hospital) => (
           <BookmarkListItem

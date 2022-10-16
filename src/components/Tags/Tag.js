@@ -61,8 +61,8 @@ export const Tag = () => {
   );
 
   return (
-    <div className="Tag_main">
-      <div className="Tag_checkbox">
+    <div className="Tag_Main">
+      <div className="Tag_Checkbox">
         {/* 체그박스 + 병원 이름 */}
         {hospitalTag.map((tag) => (
           <TagListItem

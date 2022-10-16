@@ -1,41 +1,28 @@
 import React, { useState, useCallback } from "react";
 import {
   MdBookmarks,
-  MdBookmarkBorder,
+  //MdBookmarkBorder,
   MdAssignment,
-  MdContentPaste,
+  //MdContentPaste,
   MdLabel,
-  MdLabelOutline,
+  //MdLabelOutline,
 } from "react-icons/md";
 import "../../scss/Menu/Menu.scss";
+import { Tag } from "../Tags/Tag";
+import { Bookmark } from "../Bookmark/Bookmark";
+import { TodoInsert } from "../Todo/TodoInsert";
 
-export const Menu = () => {
-  const [pages, setPage] = useState([
-    { id: 1, Page_Name: "Tag", checked: false },
-    { id: 2, Page_Name: "Bookmark", checked: false },
-    { id: 3, Page_Name: "TodoList", checked: true },
-  ]);
-
-  const menuChange = useCallback(
-    (id) => {
-      setPage(
-        pages.map((page) =>
-          page.id === id ? { ...page, checked: true } : false
-        )
-      );
-    },
-    [pages]
-  );
+export const Menu = ({ menuSelect }) => {
   return (
-    <div className="Menu_main">
-      <div className="Menu_goTag" onClick={menuChange}>
-        {pages[0].checked ? <MdLabel /> : <MdLabelOutline />}
+    <div className="Menu_Main">
+      <div className="Menu_GoTag" onClick={() => menuSelect("tag")}>
+        <MdLabel />
       </div>
-      <div className="Menu_goBookmark" onClick={menuChange}>
-        {pages[1].checked ? <MdBookmarks /> : <MdBookmarkBorder />}
+      <div className="Menu_GoBookmark" onClick={() => menuSelect("bookmark")}>
+        <MdBookmarks />
       </div>
-      <div className="Menu_goTodo" onClick={menuChange}>
-        {pages[2].checked ? <MdAssignment /> : <MdContentPaste />}
+      <div className="Menu_GoTodo" onClick={() => menuSelect("todo")}>
+        <MdAssignment />
       </div>
     </div>
   );

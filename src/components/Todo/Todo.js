@@ -20,7 +20,7 @@ export const Todo = () => {
   ]); //TodoList 내용 예시 1번은 짧은 메모, 2번은 긴 메모
 
   const nextId = useRef(3); //추가될 객체 순서
-  const todo_TodoListInsert = useCallback(
+  const todoTodoListInsert = useCallback(
     (text) => {
       const todo = {
         id: nextId.current,
@@ -33,7 +33,7 @@ export const Todo = () => {
     [todos]
   );
 
-  const todo_Remove = useCallback(
+  const todoRemove = useCallback(
     //투두리스트 제거를 위해 만든 함수
     (id) => {
       setTodos(todos.filter((todo) => todo.id !== id));
@@ -41,7 +41,7 @@ export const Todo = () => {
     [todos]
   );
 
-  const todo_Toggle = useCallback(
+  const todoToggle = useCallback(
     //투두리스트 수정을 위해 만든 함수
     (id) => {
       setTodos(
@@ -54,17 +54,17 @@ export const Todo = () => {
   );
 
   return (
-    <div className="Todo_main">
-      <div className="Todo_todoInsert">
-        <TodoInsert Todo_OnInsert={todo_TodoListInsert} />
+    <div className="Todo_Main">
+      <div className="Todo_TodoInsert">
+        <TodoInsert Todo_OnInsert={todoTodoListInsert} />
       </div>
-      <div className="Todo_todoList">
+      <div className="Todo_TodoList">
         {todos.map((todo) => (
           <TodoListItem
-            TodoListItem_todo={todo}
+            TodoListItems={todo}
             key={todo.id}
-            TodoListItem_remove={todo_Remove}
-            TodoListItem_toggle={todo_Toggle}
+            todoListItemRemove={todoRemove}
+            todoListItemToggle={todoToggle}
           />
         ))}
       </div>

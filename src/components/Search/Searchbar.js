@@ -4,11 +4,11 @@ import "../../scss/Search/Searchbar.scss";
 
 export const Searchbar = () => {
   return (
-    <div className="Searchbar_main">
-      <button type="submit" className="Searchbar_button">
+    <div className="Searchbar_Main">
+      <button type="submit" className="Searchbar_Button">
         <MdSearch />
       </button>
-      <input type="text" className="Searchbar_input" />
+      <input type="text" className="Searchbar_Input" />
     </div>
   );
 };

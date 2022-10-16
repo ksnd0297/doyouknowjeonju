@@ -19,14 +19,14 @@ export const TodoInsert = ({ Todo_OnInsert }) => {
     [Todo_OnInsert, value]
   );
   return (
-    <form className="Todo_insertForm" onSubmit={todoSubmit}>
+    <form className="Todo_InsertForm" onSubmit={todoSubmit}>
       <input
-        className="Todo_insert"
+        className="Todo_Insert"
         placeholder="내용 입력하는 곳"
         value={value}
         onChange={changeTodoValue}
       />
-      <button type="submit" className="Todo_button">
+      <button type="submit" className="Todo_Button">
         <MdAdd />
       </button>
     </form>
