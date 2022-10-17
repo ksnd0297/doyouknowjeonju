@@ -1,6 +1,6 @@
 import React from "react";
 import "../../scss/modal.css";
-
+import { MdStarRate } from "react-icons/md";
 export const ModalParking = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header, favorite } = props;
@@ -14,7 +14,7 @@ export const ModalParking = (props) => {
           <header>
             {header}
             <button className="close" onClick={favorite}>
-              즐겨찾기
+              <MdStarRate color="yellow" fontSize={20} />
             </button>
           </header>
           <main>

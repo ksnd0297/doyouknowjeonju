@@ -1,6 +1,6 @@
 import React from "react";
 import "../../scss/modal.css";
-
+import { MdStarRate } from "react-icons/md";
 // import ImageButton from "react-image-button";    오류
 export const ModalHospital = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
@@ -16,7 +16,7 @@ export const ModalHospital = (props) => {
             {header}
             {/* <ImageButton img="../../scss/star_86960.ico">*/}
             <button className="close" onClick={favorite}>
-              즐겨찾기
+              <MdStarRate color="yellow" fontSize={20} />
             </button>
             {/* </ImageButton> */}
           </header>

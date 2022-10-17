@@ -13,11 +13,11 @@ function App() {
   const closeModal = () => {
     setModalOpen(0);
   };
-  const Modal_hospitalFavorite = () => {
-    console.log("병원 즐겨찾기 추가됨");
+  const hospitalFavoriteToggle = () => {
+    console.log("병원 즐겨찾기 toggle");
   };
-  const Modal_parkingFavorite = () => {
-    console.log("주차장 즐겨찾기 추가됨");
+  const parkingFavoriteToggle = () => {
+    console.log("주차장 즐겨찾기 toggle");
   };
   return (
     <div className="App">
@@ -30,8 +30,8 @@ function App() {
           openHospitalModal={openHospitalModal}
           openParkingModal={openParkingModal}
           closeModal={closeModal}
-          Modal_hospitalFavorite={Modal_hospitalFavorite}
-          Modal_parkingFavorite={Modal_parkingFavorite}
+          Modal_hospitalFavorite={hospitalFavoriteToggle}
+          Modal_parkingFavorite={parkingFavoriteToggle}
         />
       </div>
     </div>
