@@ -2,6 +2,7 @@
     padding: 1rem;
     display: flex;
     .TodoListItem_Checkbox{
+        cursor: pointer;
         width:90%;
         flex:1;
         display: flex;
@@ -28,6 +29,7 @@
     }
     
     .TodoListItem_Remove{
+        cursor: pointer;
         font-size: 1.2rem;
     }
     

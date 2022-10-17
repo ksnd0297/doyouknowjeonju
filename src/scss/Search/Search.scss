@@ -1,6 +1,7 @@
 .Search_Main {
     height: 100%;
     background: #FFABE1;
+    font-family: "Cafe24Ssurround";
 
     .Search_SearchBar {
         height: 20%;
@@ -36,3 +37,6 @@
     }
 
 }
+@font-face{
+    font-family: "Cafe24Ssurround";
+    src: url('../../font/Cafe24Ssurround.ttf');}
