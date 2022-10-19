@@ -7,34 +7,34 @@ export function ModalApp(props) {
 
   const {
     modalOpen,
-    openParkingModal,
-    openHospitalModal,
     closeModal,
-    Modal_hospitalFavorite,
-    Modal_parkingFavorite,
+    hospitalInfo,
+    parkingInfo,
+    hospitalFavoriteToggle,
+    parkingFavoriteToggle,
   } = props;
 
   console.log(modalOpen); //console 출력
   return (
-    <React.Fragment>
-      <button onClick={openHospitalModal}>병원 마크</button>
-      <button onClick={openParkingModal}>주차 마크</button>
+    <>
       {modalOpen === 1 ? (
         <ModalHospital
           open={modalOpen}
+          hospitalInfo={hospitalInfo}
           close={closeModal}
-          favorite={Modal_hospitalFavorite}
-          header="전주 병원"
+          favorite={hospitalFavoriteToggle}
+          header={hospitalInfo.name}
         />
       ) : null}
       {modalOpen === 2 ? (
         <ModalParking
           open={modalOpen}
+          parkingInfo={parkingInfo}
           close={closeModal}
-          favorite={Modal_parkingFavorite}
-          header="전주 주차장"
+          favorite={parkingFavoriteToggle}
+          header={parkingInfo.name}
         />
       ) : null}
-    </React.Fragment>
+    </>
   );
 }
