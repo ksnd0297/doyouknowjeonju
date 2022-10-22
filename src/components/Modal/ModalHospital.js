@@ -1,10 +1,10 @@
 import React from "react";
 import "../../scss/modal.css";
-
+import { MdStarRate } from "react-icons/md";
 // import ImageButton from "react-image-button";    오류
 export const ModalHospital = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close, header, favorite } = props;
+  const { open, hospitalInfo, close, header, favorite } = props;
 
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
@@ -16,21 +16,21 @@ export const ModalHospital = (props) => {
             {header}
             {/* <ImageButton img="../../scss/star_86960.ico">*/}
             <button className="close" onClick={favorite}>
-              즐겨찾기
+              <MdStarRate color="yellow" fontSize={20} />
             </button>
             {/* </ImageButton> */}
           </header>
           <main>
-            운영시간 : 10:00 ~ 17:00
+            운영시간 : {hospitalInfo.clock}
             <p />
             <br />
-            진료과목 : 안과
+            진료과목 : {hospitalInfo.category}
             <p />
             <br />
-            주소 : 전라북도 전주시 완산구 중화산1동 한두평3길 13
+            주소 : {hospitalInfo.address}
             <p />
             <br />
-            전화번호 : 010-0000-0000
+            전화번호 : {hospitalInfo.number}
             <p />
             <br />
           </main>
