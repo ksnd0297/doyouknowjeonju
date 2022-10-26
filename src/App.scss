@@ -8,11 +8,24 @@
         height: 100%;
         width: 25%;
         background-color: yellow;
+        flex:1;
     }
-
+    .ShowSearch{
+        cursor: pointer;
+        position: relative;
+        left: 40; 
+        top: 10px;
+        width: 40px;
+        height: 40px;
+        z-index: 99;
+        transition: 0.8s ease;
+        border: 2px solid #202020;
+        border-radius: 40px;
+    }
     .main {
         height: 100%;
         width: 75%;
         background-color: green;
+        
     }
 }

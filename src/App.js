@@ -1,9 +1,12 @@
 import React, { useState, useCallback, useRef } from "react";
 import { Search } from "./components/Search/Search.js";
-
+import { MdOutlineMenuOpen, MdOutlineMenu } from "react-icons/md";
 import "./App.scss";
 
 function App() {
+  //버튼 누르면 Search 컴포넌트 안보이도록 만들기 위해 사용되는 state
+  const [viewSearch, setViewSearch] = useState(false);
+
   const [search, setSearch] = useState(""); //검색에 사용할 state
   //검색 state를 변경하는 함수, console.log는 값이 제대로 전달하는지 확인 용으로 넣음
   const searchBar = (value) => {
@@ -145,27 +148,33 @@ function App() {
     },
     [hospitals]
   );
+
   return (
     <div className="App">
       {/* 왼쪽 카테고리 & 검색 부분 */}
       <div className="aside">
-        <Search
-          search={search}
-          searchBar={searchBar}
-          pages={pages}
-          pageSelectButton={pageSelectButton}
-          hospitalTag={hospitalTag}
-          tagToggle={tagToggle}
-          todos={todos}
-          todoTodoListInsert={todoTodoListInsert}
-          todoRemove={todoRemove}
-          todoToggle={todoToggle}
-          hospitals={hospitals}
-          bookmarkRemove={bookmarkRemove}
-        />
+        {viewSearch ? (
+          <Search
+            search={search}
+            searchBar={searchBar}
+            pages={pages}
+            pageSelectButton={pageSelectButton}
+            hospitalTag={hospitalTag}
+            tagToggle={tagToggle}
+            todos={todos}
+            todoTodoListInsert={todoTodoListInsert}
+            todoRemove={todoRemove}
+            todoToggle={todoToggle}
+            hospitals={hospitals}
+            bookmarkRemove={bookmarkRemove}
+          />
+        ): <button className="ShowSearch" onClick={() => setViewSearch(!viewSearch)}>
+        <MdOutlineMenuOpen />
+      </button>}
       </div>
+      
       {/* 지도BBCCC  */}
-      <div className="main" />
+      <div className="main"></div>
     </div>
   );
 }
