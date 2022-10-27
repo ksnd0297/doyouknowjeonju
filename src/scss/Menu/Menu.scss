@@ -1,0 +1,28 @@
+.Menu_Main{
+    background: #C689C6;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    font-size: 25px;
+    border: 1px solid black;
+    .Menu_GoTag{
+        width: 33%;
+        padding-top: 17px;
+        padding-left: 35px;
+        border-right: 1px solid black;
+        cursor: pointer;
+    }
+    .Menu_GoBookmark{
+        width: 34%;
+        padding-top: 17px;
+        padding-left: 35px;
+        border-right: 1px solid black;
+        cursor: pointer;
+    }
+    .Menu_GoTodo{
+        width: 33%;
+        padding-top: 17px;
+        padding-left: 35px;
+        cursor: pointer;
+    }
+}
