@@ -1,0 +1,28 @@
+.BookmarkListItem_Main{
+    background-color: #FFE6F7;
+    padding: 16px;
+    display: flex;
+    .BookmarkListItem_Title{
+        width: 90%;
+        .BokkmarkListItem_HosName{
+            flex:1;
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
+        .BookmarkListItem_Address{
+            flex:1;
+            font-size: 12px;
+        }
+    }
+    .BokkmarkListItem_Remove{
+        cursor: pointer;
+        width:10%;
+        flex:1;
+        font-size: 24px;
+        color: #937DC2;
+    }
+    
+    & + &{
+        border-top: 1px solid #937DC2;
+    }
+}
