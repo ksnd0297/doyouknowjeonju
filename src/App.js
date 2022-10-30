@@ -6,6 +6,8 @@ import { ModalApp } from "./components/Modal/ModalApp";
 import "./App.scss";
 
 function App() {
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => updateState({}), []);
   //버튼 누르면 Search 컴포넌트 안보이도록 만들기 위해 사용되는 state
   const [viewSearch, setViewSearch] = useState(false);
 
@@ -165,6 +167,7 @@ function App() {
       address: address,
     });
     setHospital(nextHospitals);
+    forceUpdate();
     console.log("병원 즐겨찾기 toggle");
   };
   const parkingFavoriteToggle = (id, parkName, address) => {
@@ -175,10 +178,14 @@ function App() {
       address: address,
     });
     setHospital(nextParkings);
+    forceUpdate();
     console.log("주차장 즐겨찾기 toggle");
   };
   const hospital = require("./data/hospital.json");
   const carpark = require("./data/carpark.json");
+
+  console.log(hospitals);
+
   return (
     <div className="App">
       {/* 왼쪽 카테고리 & 검색 부분 */}
