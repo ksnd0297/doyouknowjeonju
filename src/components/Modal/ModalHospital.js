@@ -15,7 +15,12 @@ export const ModalHospital = (props) => {
           <header>
             {header}
             {/* <ImageButton img="../../scss/star_86960.ico">*/}
-            <button className="close" onClick={favorite}>
+            <button
+              className="close"
+              onClick={() =>
+                favorite(hosIndex, header, hospitalInfo[hosIndex].hosAddress)
+              }
+            >
               <MdStarRate color="yellow" fontSize={20} />
             </button>
             {/* </ImageButton> */}

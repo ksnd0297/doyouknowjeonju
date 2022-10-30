@@ -13,7 +13,12 @@ export const ModalParking = (props) => {
         <section>
           <header>
             {header}
-            <button className="close" onClick={favorite}>
+            <button
+              className="close"
+              onClick={() =>
+                favorite(carIndex, header, parkingInfo[carIndex].parkAddress)
+              }
+            >
               <MdStarRate color="yellow" fontSize={20} />
             </button>
           </header>

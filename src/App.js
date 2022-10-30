@@ -157,15 +157,28 @@ function App() {
   const closeModal = () => {
     setModalOpen(0);
   };
-  const hospitalFavoriteToggle = () => {
+  const hospitalFavoriteToggle = (id, hosName, address) => {
+    let nextHospitals = hospitals;
+    nextHospitals.push({
+      id: id,
+      hosName: hosName,
+      address: address,
+    });
+    setHospital(nextHospitals);
     console.log("병원 즐겨찾기 toggle");
   };
-  const parkingFavoriteToggle = () => {
+  const parkingFavoriteToggle = (id, parkName, address) => {
+    let nextParkings = hospitals;
+    nextParkings.push({
+      id: id,
+      hosName: parkName,
+      address: address,
+    });
+    setHospital(nextParkings);
     console.log("주차장 즐겨찾기 toggle");
   };
   const hospital = require("./data/hospital.json");
   const carpark = require("./data/carpark.json");
-
   return (
     <div className="App">
       {/* 왼쪽 카테고리 & 검색 부분 */}
@@ -185,9 +198,14 @@ function App() {
             hospitals={hospitals}
             bookmarkRemove={bookmarkRemove}
           />
-        ): <button className="ShowSearch" onClick={() => setViewSearch(!viewSearch)}>
-        <MdOutlineMenuOpen />
-      </button>}
+        ) : (
+          <button
+            className="ShowSearch"
+            onClick={() => setViewSearch(!viewSearch)}
+          >
+            <MdOutlineMenuOpen />
+          </button>
+        )}
       </div>
       {/* 지도  */}
       <div className="main">
