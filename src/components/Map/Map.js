@@ -191,7 +191,7 @@ export const Map = ({
         ? map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
         : map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
     });
-  }, [traffic]);
+  }, [traffic, hospital]);
 
   return (
     <MapContainer id="Main_Map">

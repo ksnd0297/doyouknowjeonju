@@ -16,7 +16,6 @@ export function ModalApp(props) {
     parkingFavoriteToggle,
   } = props;
 
-  console.log(modalOpen); //console 출력
   return (
     <>
       {modalOpen === 1 ? (

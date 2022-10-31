@@ -181,10 +181,22 @@ function App() {
     forceUpdate();
     console.log("주차장 즐겨찾기 toggle");
   };
-  const hospital = require("./data/hospital.json");
+
+  let Tag = [];
+  hospitalTag.map((value) =>
+    value.checked === true ? Tag.push(value.id - 1) : null
+  );
+
+  let hospital = require("./data/hospital.json");
+
   const carpark = require("./data/carpark.json");
 
-  console.log(hospitals);
+  hospital = hospital.filter((value) => {
+    for (let i = 0; i < Tag.length; i++) {
+      if (value.hosSubject[Tag[i]] === "0") return false;
+    }
+    return true;
+  });
 
   return (
     <div className="App">
