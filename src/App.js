@@ -10,6 +10,10 @@ function App() {
   const forceUpdate = useCallback(() => updateState({}), []);
   //버튼 누르면 Search 컴포넌트 안보이도록 만들기 위해 사용되는 state
   const [viewSearch, setViewSearch] = useState(true);
+  const changeView = () => {
+    setViewSearch(!viewSearch);
+    console.log(viewSearch);
+  };
 
   const [search, setSearch] = useState(""); //검색에 사용할 state
   //검색 state를 변경하는 함수, console.log는 값이 제대로 전달하는지 확인 용으로 넣음
@@ -201,14 +205,11 @@ function App() {
   return (
     <div className="App">
       {/* 왼쪽 카테고리 & 검색 부분 */}
-      <div className="aside">
+      <div className={`aside &{viewSearch ? 'view':'close'}`}>
         {viewSearch ? (
           <>
-            <button
-              className="ShowSearch"
-              onClick={() => setViewSearch(!viewSearch)}
-            >
-              <MdOutlineMenuOpen />
+            <button className="ShowSearch" onClick={changeView}>
+              <MdOutlineMenu />
             </button>
             <Search
               search={search}
@@ -226,10 +227,7 @@ function App() {
             />
           </>
         ) : (
-          <button
-            className="ShowSearch"
-            onClick={() => setViewSearch(!viewSearch)}
-          >
+          <button className="ShowSearch" onClick={changeView}>
             <MdOutlineMenuOpen />
           </button>
         )}
