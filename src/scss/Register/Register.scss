@@ -1,0 +1,22 @@
+.Register_Wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    width: 100%;
+    background-color: #F38181;
+
+    .Register_Center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 80%;
+        width: 30%;
+
+        border-radius: 2%;
+        overflow: hidden;
+        background-color: #95E1D3;
+    }
+}

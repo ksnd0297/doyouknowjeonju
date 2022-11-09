@@ -1,29 +1,49 @@
-import React, { useState, useCallback, useRef } from "react";
-import { Search } from "./components/Search/Search.js";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import { MdOutlineMenuOpen, MdOutlineMenu } from "react-icons/md";
+import axios from "axios";
+
+import { Search } from "./components/Search/Search.js";
+
 import { Map } from "./components/Map/Map";
+
 import { ModalApp } from "./components/Modal/ModalApp";
+
+import { Login } from "./components/Login/Login";
+
+import { Register } from "./components/Register/Register";
 import "./App.scss";
 
 function App() {
+  useEffect(() => {
+    async function getInfo() {
+      const hospital = await axios.get("http://124.51.137.122:8000/hospital");
+      const carpark = await axios.get("http://124.51.137.122:8000/parking");
+      settHospital(hospital.data);
+      settCarpark(carpark.data);
+      forceUpdate();
+    }
+    getInfo();
+  }, []);
+
+  // mainPage 결정 로직
+  const [mainPage, setMainPage] = useState("main");
+
+  // 강제 업데이트 로직
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
+
+  let [thosptial, settHospital] = useState([]);
+  let [tcarpark, settCarpark] = useState([]);
+
+  let hospital = thosptial;
+  let carpark = tcarpark;
+
+  /* SideBar 로직 */
   //버튼 누르면 Search 컴포넌트 안보이도록 만들기 위해 사용되는 state
   const [viewSearch, setViewSearch] = useState(true);
 
-  const [search, setSearch] = useState(""); //검색에 사용할 state
-  //검색 state를 변경하는 함수, console.log는 값이 제대로 전달하는지 확인 용으로 넣음
-  const searchBar = (value) => {
-    setSearch(value);
-    console.log(value);
-  };
   //페이지 변환을 위해 사용할 객체
   const [pages, setPage] = useState("tag");
-
-  //Menu 컴포넌트에서 아이콘 누르면 여기서 pages 갱신
-  const pageSelectButton = (name) => {
-    setPage(name);
-  };
 
   //키 값으로 쓸 id, 병원 종류, 체크 유무로 구성된 객체 생성
   const [hospitalTag, SetHospitalTag] = useState([
@@ -68,20 +88,8 @@ function App() {
       checked: false,
     },
   ]);
-  //태그 체크유무 변경 함수
-  const tagToggle = useCallback(
-    (id) => {
-      SetHospitalTag(
-        hospitalTag.map((hos_Tag) =>
-          hos_Tag.id === id
-            ? { ...hos_Tag, checked: !hos_Tag.checked }
-            : hos_Tag
-        )
-      );
-    },
-    [hospitalTag]
-  );
 
+  //TodoList 내용 예시 1번은 짧은 메모, 2번은 긴 메모
   const [todos, setTodos] = useState([
     //입력된 TodoList를 관리하기 위해 선언
     //여기 부터는 TodoList 관리 파트
@@ -95,7 +103,51 @@ function App() {
       text: "그 밖의 다른 메모 인데 아주 긴 경우를 테스트해보기 위해 넣어본 메모.",
       checked: false,
     },
-  ]); //TodoList 내용 예시 1번은 짧은 메모, 2번은 긴 메모
+  ]);
+
+  //bookmark에서
+  const [hospitals, setHospital] = useState([
+    //예시로 만든 객체 리스트
+    {
+      id: 1,
+      hosName: "예시 병원",
+      address: "전라북도 전주시 어딘가",
+    },
+    {
+      id: 2,
+      hosName: "전주시보건소",
+      address: "전북 전주시 완산구 전라감영로 33 전주시보건소",
+    },
+  ]);
+
+  //검색 state를 변경하는 함수, console.log는 값이 제대로 전달하는지 확인 용으로 넣음
+  const searchBar = (TargetHospitalName) => {
+    const targetHospital = hospital.filter(
+      (value) => value.hosName === TargetHospitalName
+    );
+    setLatitude(targetHospital[0].hosLat);
+    setLongitude(targetHospital[0].hosLng);
+    console.log("검색 : ", targetHospital[0].hosName);
+  };
+
+  //Menu 컴포넌트에서 아이콘 누르면 여기서 pages 갱신
+  const pageSelectButton = (name) => {
+    setPage(name);
+  };
+
+  //태그 체크유무 변경 함수
+  const tagToggle = useCallback(
+    (id) => {
+      SetHospitalTag(
+        hospitalTag.map((hos_Tag) =>
+          hos_Tag.id === id
+            ? { ...hos_Tag, checked: !hos_Tag.checked }
+            : hos_Tag
+        )
+      );
+    },
+    [hospitalTag]
+  );
 
   const nextId = useRef(3); //추가될 객체 순서
   const todoTodoListInsert = useCallback(
@@ -131,20 +183,6 @@ function App() {
     [todos]
   );
 
-  //bookmark에서
-  const [hospitals, setHospital] = useState([
-    //예시로 만든 객체 리스트
-    {
-      id: 1,
-      hosName: "예시 병원",
-      address: "전라북도 전주시 어딘가",
-    },
-    {
-      id: 2,
-      hosName: "전주시보건소",
-      address: "전북 전주시 완산구 전라감영로 33 전주시보건소",
-    },
-  ]);
   const bookmarkRemove = useCallback(
     //북마크 제거를 위해 만든 함수
     (id) => {
@@ -153,12 +191,26 @@ function App() {
     [hospitals]
   );
 
+  let Tag = [];
+  hospitalTag.map((value) =>
+    value.checked === true ? Tag.push(value.id - 1) : null
+  );
+
+  hospital = hospital.filter((value) => {
+    for (let i = 0; i < Tag.length; i++) {
+      if (value.hosSubject[Tag[i]] === "0") return false;
+    }
+    return true;
+  });
+  /* SideBar 로직 */
+
+  /* Modal 로직 */
   const [modalOpen, setModalOpen] = useState(0);
-  const [hosIndex, setHosIndex] = useState(0);
-  const [carIndex, setCarIndex] = useState(0);
+
   const closeModal = () => {
     setModalOpen(0);
   };
+
   const hospitalFavoriteToggle = (id, hosName, address) => {
     let nextHospitals = hospitals;
     nextHospitals.push({
@@ -181,79 +233,83 @@ function App() {
     forceUpdate();
     console.log("주차장 즐겨찾기 toggle");
   };
+  /* Modal 로직 */
 
-  let Tag = [];
-  hospitalTag.map((value) =>
-    value.checked === true ? Tag.push(value.id - 1) : null
-  );
+  /* Map 로직 */
+  // 경도 위도 데이터 저장
+  const [latitude, setLatitude] = useState(35.824184);
+  const [longitude, setLongitude] = useState(127.147976);
 
-  let hospital = require("./data/hospital.json");
+  const [hosIndex, setHosIndex] = useState(0);
+  const [carIndex, setCarIndex] = useState(0);
 
-  const carpark = require("./data/carpark.json");
-
-  hospital = hospital.filter((value) => {
-    for (let i = 0; i < Tag.length; i++) {
-      if (value.hosSubject[Tag[i]] === "0") return false;
-    }
-    return true;
-  });
+  /* Map 로직 */
 
   return (
     <div className="App">
-      {/* 왼쪽 카테고리 & 검색 부분 */}
-      <div className="aside">
-        {viewSearch ? (
-          <>
-            <button
-              className="ShowSearch"
-              onClick={() => setViewSearch(!viewSearch)}
-            >
-              <MdOutlineMenuOpen />
-            </button>
-            <Search
-              search={search}
-              searchBar={searchBar}
-              pages={pages}
-              pageSelectButton={pageSelectButton}
-              hospitalTag={hospitalTag}
-              tagToggle={tagToggle}
-              todos={todos}
-              todoTodoListInsert={todoTodoListInsert}
-              todoRemove={todoRemove}
-              todoToggle={todoToggle}
-              hospitals={hospitals}
-              bookmarkRemove={bookmarkRemove}
+      {mainPage === "login" ? (
+        <Login />
+      ) : mainPage === "register" ? (
+        <Register />
+      ) : mainPage === "main" ? (
+        <>
+          <div className="aside">
+            {viewSearch ? (
+              <>
+                <button
+                  className="ShowSearch"
+                  onClick={() => setViewSearch(!viewSearch)}
+                >
+                  <MdOutlineMenuOpen />
+                </button>
+                <Search
+                  searchBar={searchBar}
+                  pages={pages}
+                  pageSelectButton={pageSelectButton}
+                  hospitalTag={hospitalTag}
+                  tagToggle={tagToggle}
+                  todos={todos}
+                  todoTodoListInsert={todoTodoListInsert}
+                  todoRemove={todoRemove}
+                  todoToggle={todoToggle}
+                  hospitals={hospitals}
+                  bookmarkRemove={bookmarkRemove}
+                />
+              </>
+            ) : (
+              <button
+                className="ShowSearch"
+                onClick={() => setViewSearch(!viewSearch)}
+              >
+                <MdOutlineMenuOpen />
+              </button>
+            )}
+          </div>
+          <div className="main">
+            <Map
+              setModalOpen={setModalOpen}
+              setHosIndex={setHosIndex}
+              setCarIndex={setCarIndex}
+              hospital={hospital}
+              carpark={carpark}
+              latitude={latitude}
+              longitude={longitude}
+              setLatitude={setLatitude}
+              setLongitude={setLongitude}
             />
-          </>
-        ) : (
-          <button
-            className="ShowSearch"
-            onClick={() => setViewSearch(!viewSearch)}
-          >
-            <MdOutlineMenuOpen />
-          </button>
-        )}
-      </div>
-      {/* 지도  */}
-      <div className="main">
-        <Map
-          setModalOpen={setModalOpen}
-          setHosIndex={setHosIndex}
-          setCarIndex={setCarIndex}
-          hospital={hospital}
-          carpark={carpark}
-        />
-        <ModalApp
-          modalOpen={modalOpen}
-          closeModal={closeModal}
-          hosIndex={hosIndex}
-          carIndex={carIndex}
-          hospitalInfo={hospital}
-          parkingInfo={carpark}
-          hospitalFavoriteToggle={hospitalFavoriteToggle}
-          parkingFavoriteToggle={parkingFavoriteToggle}
-        />
-      </div>
+            <ModalApp
+              modalOpen={modalOpen}
+              closeModal={closeModal}
+              hosIndex={hosIndex}
+              carIndex={carIndex}
+              hospitalInfo={hospital}
+              parkingInfo={carpark}
+              hospitalFavoriteToggle={hospitalFavoriteToggle}
+              parkingFavoriteToggle={parkingFavoriteToggle}
+            />
+          </div>
+        </>
+      ) : null}
     </div>
   );
 }

@@ -1,0 +1,107 @@
+.LoginContainer_Wrapper {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    
+
+    .LoginContainer_Logo {
+        width: 100%;
+        height: 30%;
+        background-color: #FCE38A;
+    }
+
+    .LoginContainer_IdSpace {
+        width: 80%;
+        height: 15%;
+
+        background: hsl(0deg 0% 100%);
+        box-shadow: 0 0 2em hsl(231deg 62% 94%);
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        border-radius: 40px;
+        color: hsl(0deg 0% 30%);
+
+        input {
+			outline: none;
+			border: none;
+			&::placeholder {
+				color: hsl(0deg 0% 0%);
+				font-size: 0.9em;
+			}
+        }
+
+        label[for="Id"]{
+            display: flex;
+            gap: 10px;
+            svg {
+                vertical-align: middle;
+            }
+            input {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .LoginContainer_PwdSpace {
+        background-color:bisque;
+        width: 80%;
+        height: 15%;
+
+        background: hsl(0deg 0% 100%);
+        box-shadow: 0 0 2em hsl(231deg 62% 94%);
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        border-radius: 40px;
+        color: hsl(0deg 0% 30%);
+
+        input {
+			outline: none;
+			border: none;
+			&::placeholder {
+				color: hsl(0deg 0% 0%);
+				font-size: 0.9em;
+			}
+        }
+    }
+
+    .LoginContainer_Submit {
+        width: 100%;
+        height: 10%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .LoginContainer_Login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 80%;
+            padding: 1em;
+            background: hsl(233deg 36% 38%);
+            color: hsl(0 0 100);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    }
+
+    .LoginContainer_Footer {
+        display: flex;
+		font-size: 0.7em;
+		gap: 14em;
+		padding-bottom: 2em;
+		span { cursor: pointer }
+    }
+}
