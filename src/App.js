@@ -12,11 +12,14 @@ function App() {
   const [viewSearch, setViewSearch] = useState(true);
 
   const [search, setSearch] = useState(""); //검색에 사용할 state
+  let hospital = require("./data/hospital.json");
+  let carpark = require("./data/carpark.json");
   //검색 state를 변경하는 함수, console.log는 값이 제대로 전달하는지 확인 용으로 넣음
   const searchBar = (value) => {
     setSearch(value);
     console.log(value);
   };
+
   //페이지 변환을 위해 사용할 객체
   const [pages, setPage] = useState("tag");
 
@@ -187,16 +190,27 @@ function App() {
     value.checked === true ? Tag.push(value.id - 1) : null
   );
 
-  let hospital = require("./data/hospital.json");
-
-  const carpark = require("./data/carpark.json");
-
   hospital = hospital.filter((value) => {
     for (let i = 0; i < Tag.length; i++) {
       if (value.hosSubject[Tag[i]] === "0") return false;
     }
     return true;
   });
+
+  let sksk = 0;
+  if (search !== "") {
+    hospital = hospital.filter((value) => {
+      if (value.hosName === search) {
+        console.log("찾았습니다.");
+        sksk = 1;
+        return true;
+      }
+      return false;
+    });
+    if (sksk === 0) {
+      console.log("없는 search 입니다.");
+    }
+  }
 
   return (
     <div className="App">
