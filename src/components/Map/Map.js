@@ -14,6 +14,7 @@ export const Map = ({
   setModalOpen,
   setHosIndex,
   setCarIndex,
+  viewSearch,
   hospital,
   carpark,
 }) => {
@@ -191,7 +192,7 @@ export const Map = ({
         ? map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
         : map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
     });
-  }, [traffic, hospital]);
+  }, [traffic, hospital, viewSearch]);
 
   return (
     <MapContainer id="Main_Map">

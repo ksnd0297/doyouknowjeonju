@@ -208,7 +208,7 @@ function App() {
       <div className={`aside &{viewSearch ? 'view':'close'}`}>
         {viewSearch ? (
           <>
-            <button className="ShowSearch" onClick={changeView}>
+            <button className="closeSearch" onClick={changeView}>
               <MdOutlineMenu />
             </button>
             <Search
@@ -227,7 +227,7 @@ function App() {
             />
           </>
         ) : (
-          <button className="ShowSearch" onClick={changeView}>
+          <button className="showSearch" onClick={changeView}>
             <MdOutlineMenuOpen />
           </button>
         )}
@@ -235,6 +235,7 @@ function App() {
       {/* 지도  */}
       <div className="main">
         <Map
+          viewSearch={viewSearch}
           setModalOpen={setModalOpen}
           setHosIndex={setHosIndex}
           setCarIndex={setCarIndex}
