@@ -52,16 +52,17 @@ export const Map = ({
 
   useEffect(() => {
     kakao.maps.load(async () => {
-      // let path = await axios.get(
-      //   "https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248ec5e812c5b3044c7997345c8e251f1d3&start=127.0806498,35.86442664&end=127.1278535,35.80087761",
-      //   {
-      //     headers: {
-      //       Accept:
-      //         "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8",
-      //     },
-      //   }
-      // );
-      // path = path.data.features[0].geometry.coordinates;
+      let path = await axios.get(
+        "https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248ec5e812c5b3044c7997345c8e251f1d3&start=127.0806498,35.86442664&end=127.1278535,35.80087761",
+        {
+          headers: {
+            Accept:
+              "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8",
+          },
+        }
+      );
+      console.log(path);
+      path = path.data.features[0].geometry.coordinates;
 
       const mapContainer = document.getElementById("Main_Map");
       const mapOption = {
@@ -220,20 +221,20 @@ export const Map = ({
         : map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 
       // 특정 지점까지를 선분으로 연결하는 로직
-      // const polyPath = path.map(
-      //   (value) => new kakao.maps.LatLng(value[1], value[0])
-      // );
+      const polyPath = path.map(
+        (value) => new kakao.maps.LatLng(value[1], value[0])
+      );
 
-      // const polyline = new kakao.maps.Polyline({
-      //   map: map,
-      //   path: polyPath,
-      //   strokeWeight: 3,
-      //   strokeColor: "blue",
-      //   strokeOpacity: 1,
-      //   strokeStyle: "solid",
-      // });
+      const polyline = new kakao.maps.Polyline({
+        map: map,
+        path: polyPath,
+        strokeWeight: 3,
+        strokeColor: "blue",
+        strokeOpacity: 1,
+        strokeStyle: "solid",
+      });
 
-      // polyline.setMap(map);
+      polyline.setMap(map);
     });
   }, [traffic, hospital, latitude, longitude]);
 
