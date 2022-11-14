@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'Cafe24Ssurround';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
-  font-weight: normal;
+  font-family: 'HallymGothic-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2') format('woff2');
+  font-weight: 400;
   font-style: normal;
 }
 
 * {
-    font-family: 'Cafe24Ssurround';
+    font-family: 'HallymGothic-Regular';
     box-sizing: border-box;
     position: relative;
     padding: 0;

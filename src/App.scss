@@ -7,13 +7,32 @@
     .aside {
         height: 100%;
         width: 25%;
+        position: flex;
         background-color: yellow;
+        &.view{
+            width: 25%;
+        }
+        &.close{
+            width:0%;
+        }
+        .closeSearch{
+            cursor: pointer;
+            position: absolute;
+            left: 88%; 
+            width: 40px;
+            height: 40px;
+            z-index: 99;
+            background: none;
+            outline:none;
+            border: none;
+            color: #FFE6F7;
+            font-size: 24px;
+        }
     }
-    .ShowSearch{
+    .showSearch{
         cursor: pointer;
         position: absolute;
-        left: 40; 
-        top: 10px;
+        top: 9%;
         width: 40px;
         height: 40px;
         z-index: 99;
@@ -23,7 +42,7 @@
     }
     .main {
         height: 100%;
-        width: 75%;
+        width: 100%;
         background-color: green;
     }
 }

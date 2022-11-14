@@ -11,6 +11,10 @@ function App() {
   //버튼 누르면 Search 컴포넌트 안보이도록 만들기 위해 사용되는 state
   const [viewSearch, setViewSearch] = useState(true);
 
+  const changeView = () => {
+    setViewSearch(!viewSearch);
+    console.log(viewSearch);
+  };
   const [search, setSearch] = useState(""); //검색에 사용할 state
   let hospital = require("./data/hospital.json");
   let carpark = require("./data/carpark.json");
@@ -215,14 +219,11 @@ function App() {
   return (
     <div className="App">
       {/* 왼쪽 카테고리 & 검색 부분 */}
-      <div className="aside">
+      <div className={`aside &{viewSearch ? 'view':'close'}`}>
         {viewSearch ? (
           <>
-            <button
-              className="ShowSearch"
-              onClick={() => setViewSearch(!viewSearch)}
-            >
-              <MdOutlineMenuOpen />
+            <button className="closeSearch" onClick={changeView}>
+              <MdOutlineMenu />
             </button>
             <Search
               search={search}
@@ -240,10 +241,7 @@ function App() {
             />
           </>
         ) : (
-          <button
-            className="ShowSearch"
-            onClick={() => setViewSearch(!viewSearch)}
-          >
+          <button className="showSearch" onClick={changeView}>
             <MdOutlineMenuOpen />
           </button>
         )}
