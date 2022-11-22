@@ -1,15 +1,16 @@
 .Menu_Main{
-    background: #C689C6;
+    background: #00ABB3;
     height: 100%;
     display: flex;
     font-size: 25px;
-    border: 1px solid black;
+    //border: 1px solid black;
+
     .Menu_GoTag{
         display: flex;
         align-items: center;
         justify-content: center;
         width: 33%;
-        border-right: 1px solid black;
+        //border-right: 1px solid black;
         cursor: pointer;
     }
     .Menu_GoBookmark{
@@ -17,7 +18,7 @@
         align-items: center;
         justify-content: center;
         width: 34%;
-        border-right: 1px solid black;
+        //border-right: 1px solid black;
         cursor: pointer;
     }
     .Menu_GoTodo{

@@ -19,7 +19,7 @@
   max-width: 450px;
   margin: 0 auto;
   border-radius: 0.3rem;
-  background-color: #FFE6F7;
+  background-color: #EFF5F5;
   /* 팝업이 열릴때 스르륵 열리는 효과 */
   animation: modal-show 1s;
   overflow: hidden;
@@ -27,7 +27,7 @@
 .modal > section > header {
   position: relative;
   padding: 16px 64px 16px 16px;
-  background-color: #C689C6;
+  background-color: #00ABB3;
   font-weight: 700;
 }
 .modal > section > header button {
@@ -55,7 +55,7 @@
   font-family: 'Cafe24Ssurround';
   padding: 6px 12px;
   color: rgb(1, 6, 16);
-  background-color: #FFABE1;
+  background-color: #EB6440;
   border-radius: 0.3rem;
   font-size: 15px;
 }

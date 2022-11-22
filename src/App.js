@@ -1,18 +1,21 @@
 import React, { useState, useCallback, useRef } from "react";
-import { Search } from "./components/Search/Search.js";
-import { MdOutlineMenuOpen, MdOutlineMenu } from "react-icons/md";
 import { Map } from "./components/Map/Map";
 import { ModalApp } from "./components/Modal/ModalApp";
 import "./App.scss";
+//import { Aside } from "./components/Aside/Aside.js";
+import { MdOutlineMenuOpen, MdOutlineMenu } from "react-icons/md";
+import { Search } from "./components/Search/Search.js";
 
 function App() {
   const [, updateState] = useState();
   const forceUpdate = useCallback(() => updateState({}), []);
+
   //버튼 누르면 Search 컴포넌트 안보이도록 만들기 위해 사용되는 state
   const [viewSearch, setViewSearch] = useState(true);
+  //컴포넌트 상태 변환 함수
   const changeView = () => {
     setViewSearch(!viewSearch);
-    console.log(viewSearch);
+    console.log("view Changed");
   };
 
   const [search, setSearch] = useState(""); //검색에 사용할 state
@@ -72,7 +75,9 @@ function App() {
       checked: false,
     },
   ]);
+
   //태그 체크유무 변경 함수
+  //클릭된 아이디값만 변경하고 나머지는 변화가 없도록 map을 사용하여 필터링
   const tagToggle = useCallback(
     (id) => {
       SetHospitalTag(
@@ -102,6 +107,8 @@ function App() {
   ]); //TodoList 내용 예시 1번은 짧은 메모, 2번은 긴 메모
 
   const nextId = useRef(3); //추가될 객체 순서
+
+  //TodoList에 현재 입력된 내용을 보여주기 위해 객체에 추가시킴
   const todoTodoListInsert = useCallback(
     (text) => {
       const todo = {
@@ -109,6 +116,8 @@ function App() {
         text,
         checked: false,
       };
+
+      //이전 객체에 추가된 객체 붙이기
       setTodos(todos.concat(todo));
       nextId.current += 1;
     },
@@ -135,7 +144,8 @@ function App() {
     [todos]
   );
 
-  //bookmark에서
+  //bookmark에서 사용되는 병원 북마크 예시
+  //병원들은 이 state를 사용하여 북마크에 추가됨
   const [hospitals, setHospital] = useState([
     //예시로 만든 객체 리스트
     {

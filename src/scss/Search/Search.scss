@@ -1,6 +1,6 @@
 .Search_Main {
     height: 100%;
-    background: #FFABE1;
+    background: #00ABB3;
     width:100%;
 
     .Search_SearchBar {
@@ -17,7 +17,7 @@
             outline: none;
             border: none;
             //padding-left: 1rem;
-            color: white;
+            color: #EFF5F5;
             font-size: 1.2rem;
             flex: 1;
         }
@@ -33,7 +33,7 @@
 
         .Search_Tabs {
             height: 90%;
-            background-color: #FFE6F7;
+            background-color: #EFF5F5;
         }
     }
 

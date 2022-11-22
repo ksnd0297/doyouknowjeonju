@@ -1,7 +1,7 @@
 .TagListItem_Main{
     //height:100%;
     //width: 100%;
-    background: #FFE6F7;
+    background: white;
     padding: 8px;
     display: flex;
     .TagListItem_Checkbox{
@@ -15,7 +15,7 @@
             //padding-top: 2px;
         }
         &.checked{
-            color:#937DC2;
+            color:#EB6440;
         }
         .TagListItem_Hos_Name{
             padding-top: 2px;
@@ -23,8 +23,8 @@
             font-weight: bold;
         }
     }
-    
-    & + &{
-        border-top: 1px solid #937DC2;
-    }
+    border-bottom: 1px dashed #3C4048;
+    // & + &{
+    //     border-top: 1px dashed #3C4048;
+    // }
 }

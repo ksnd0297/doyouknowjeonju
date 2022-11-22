@@ -19,7 +19,7 @@
         }
         &.checked{
             svg{
-                color:#937DC2;
+                color:#EB6440;
             }
             .TodoListItem_Text{
                 color:#adb5bd;
@@ -32,8 +32,8 @@
         cursor: pointer;
         font-size: 1.2rem;
     }
-    
-    & + &{
-        border-top: 1px solid #937DC2;
-    }
+    border-bottom: 1px dashed #3C4048;
+    // & + &{
+    //     border-top: 1px solid #3C4048;
+    // }
 }
